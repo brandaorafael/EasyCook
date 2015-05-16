@@ -1,6 +1,5 @@
 package com.example.taqtile.easycook;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -9,37 +8,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.SeekBar;
 
 
-public class MainActivity extends ActionBarActivity {
+public class SearchActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_search);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-
     }
 
-    public void clique_search (View view){
-        Intent search = new Intent(this, SearchActivity.class);
-        MainActivity.this.startActivity(search);
+    public void clique_nome (View view){
+        final EditText getName = (EditText) findViewById(R.id.getNome);
+        getName.setVisibility(View.VISIBLE);
     }
 
     public void clique_time (View view){
-        Intent search = new Intent(this, SearchActivity.class);
-        MainActivity.this.startActivity(search);
+        final SeekBar getTime = (SeekBar) findViewById(R.id.seekBar);
+        getTime.setVisibility(View.VISIBLE);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_search, menu);
         return true;
     }
 
@@ -69,8 +69,9 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_search, container, false);
             return rootView;
         }
+
     }
 }
