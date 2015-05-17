@@ -10,14 +10,27 @@ public class Ingredient {
     private String name;
     private int quantity;
 
-    public Ingredient(String name, int qtd) {
+
+
+    private String unit;
+
+    public Ingredient(String name, int qtd, String unit) {
         this.name = name;
         this.quantity = qtd;
+        this.unit = unit;
     }
 
     // default constructor
     public Ingredient() {
-        this("",0);
+        this("",0, "");
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getName() {
@@ -41,6 +54,7 @@ public class Ingredient {
         try {
             jsonObject.put("name", name);
             jsonObject.put("quantity", quantity);
+            jsonObject.put("unit", unit);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -51,6 +65,7 @@ public class Ingredient {
         try {
             name = jsonObject.getString("name");
             quantity = jsonObject.getInt("quantity");
+            unit = jsonObject.getString("unit");
         } catch (JSONException e) {
             e.printStackTrace();
         }
