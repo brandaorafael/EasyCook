@@ -34,8 +34,8 @@ public class RecipesAdapter extends ParseQueryAdapter<Recipe> {
                     e.printStackTrace();
                 }
                 jsonArray.add(jsonObject);*/
-                query.whereContains("ingredientsList", "azeite");
-                //query.whereContainedIn("ingredientsList", a);//.whereEqualTo("portions", 1);
+                //query.whereContains("ingredientsList", "azeite");
+                query.whereContainedIn("ingredientsList", a);//.whereEqualTo("portions", 1);
                 //query.whereContains("ingredients", "azeite");
                 //query.whereContains("ingredientsList", "azeite");
                 //query.whereContains("name", "brigadeiro");
