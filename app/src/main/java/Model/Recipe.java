@@ -6,6 +6,8 @@ import com.parse.ParseObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.parse.ParseQuery;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +15,14 @@ import java.util.List;
 /**
  * Created by User on 5/16/2015.
  */
+
 @ParseClassName("Recipe")
 public class Recipe extends ParseObject {
 
+    public static ParseQuery<Recipe> getQuery(){
 
+        return ParseQuery.getQuery(Recipe.class);
+    }
     private String name;
     private ArrayList<Ingredient> ingredientsList;
     private int time;
@@ -58,10 +64,11 @@ public class Recipe extends ParseObject {
     }
 
     public String getName() {
-        return this.name;
+        return getString("name");
     }
 
     public void setName(String name) {
+        put("name", name);
         this.name = name;
     }
 
@@ -70,6 +77,7 @@ public class Recipe extends ParseObject {
     }
 
     public void setIngredientsList(ArrayList<Ingredient> ingredientsList) {
+        put("ingredients", new JSONArray(ingredientsList));
         this.ingredientsList = ingredientsList;
     }
 
