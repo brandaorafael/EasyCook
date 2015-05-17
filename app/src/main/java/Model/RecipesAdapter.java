@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Created by User on 5/16/2015.
  */
 public class RecipesAdapter extends ParseQueryAdapter<Recipe> {
-    public RecipesAdapter(Context context, final String name, final int total_time) {
+    public RecipesAdapter(Context context, final String name, final int total_time, final String[] ingredients) {
 
         super(context, new ParseQueryAdapter.QueryFactory<Recipe>() {
             public ParseQuery<Recipe> create() {
@@ -33,13 +33,12 @@ public class RecipesAdapter extends ParseQueryAdapter<Recipe> {
                     query.whereLessThanOrEqualTo("time",total_time);
                 }
 
+
                 ArrayList<String> a = new ArrayList<String>();
-                a.add("azeite");
-                query.whereContains("ingredientsNamesList", "azeite");
-                //query.whereContainedIn("ingredientsList", a);//.whereEqualTo("portions", 1);
-                //query.whereContains("ingredients", "azeite");
-                //query.whereContains("ingredientsList", "azeite");
-                //query.whereContains("name", "brigadeiro");
+                for (int i=0;i<ingredients.length;i++)
+                    a.add(ingredients[i]);
+                query.whereContainedIn("ingredientsNamesList", a);
+
                 return query;
             }
         });

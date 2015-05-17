@@ -28,7 +28,8 @@ public class SearchActivityList extends ActionBarActivity {
         }*/
         String name = getIntent().getStringExtra("name");
         int time = getIntent().getIntExtra("total_time",0);
-        RecipesAdapter mainAdapter = new RecipesAdapter(this, name, time);
+        String ingredients[] = getIntent().getStringArrayExtra("ingredients");
+        RecipesAdapter mainAdapter = new RecipesAdapter(this, name, time, ingredients);
         ListView listView = (ListView) findViewById(R.id.recipesListView);
         listView.setAdapter(mainAdapter);
 
