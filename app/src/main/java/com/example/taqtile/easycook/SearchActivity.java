@@ -31,6 +31,11 @@ public class SearchActivity extends ActionBarActivity {
         getName.setVisibility(View.VISIBLE);
     }
 
+    public void clique_ingredients (View view){
+        final EditText getIngredients = (EditText) findViewById(R.id.getIngredients);
+        getIngredients.setVisibility(View.VISIBLE);
+    }
+
     public void clique_time (View view){
         final SeekBar getTime = (SeekBar) findViewById(R.id.seekBar);
         getTime.setVisibility(View.VISIBLE);
