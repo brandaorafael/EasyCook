@@ -23,44 +23,9 @@ public class Recipe extends ParseObject {
 
         return ParseQuery.getQuery(Recipe.class);
     }
-    private String name;
-    private ArrayList<Ingredient> ingredientsList;
-    private int time;
-    private int portions;
-    private float difficulty; // from 0 to 5 stars
-    private ArrayList<String> equipments;
-    private PrepareMode prepareMode;
-
-    // full constructor
-    public Recipe(String name, ArrayList<Ingredient> ingredientsList, int time, int portions, float difficulty, ArrayList<String> equipments, PrepareMode prepareMode) {
-        this.name = name;
-        this.ingredientsList = ingredientsList;
-        this.time = time;
-        this.portions = portions;
-        this.difficulty = difficulty;
-        this.equipments = equipments;
-        this.prepareMode = prepareMode;
-    }
-
-    public Recipe(String name, ArrayList<Ingredient> ingredientsList, int time, PrepareMode prepareMode, int portions) {
-        this.name = name;
-        this.ingredientsList = ingredientsList;
-        this.time = time;
-        this.prepareMode = prepareMode;
-        this.portions = portions;
-        this.prepareMode = null;
-        this.difficulty = 0;
-    }
 
     // default constructor
-    public Recipe(){
-        this.prepareMode = null;
-        this.equipments = null;
-        this.ingredientsList = null;
-        this.time = 0;
-        this.portions = 0;
-        this.name = "";
-        this.difficulty = 0;
+    public Recipe() {
     }
 
     public String getName() {
@@ -119,11 +84,11 @@ public class Recipe extends ParseObject {
     }
 
     public PrepareMode getPrepareMode() {
-        return prepareMode;
+        return (PrepareMode) get("prepareMode");
     }
 
     public void setPrepareMode(PrepareMode prepareMode) {
-        this.prepareMode = prepareMode;
+        put("prepareMode", prepareMode);
     }
 
     public float getDifficulty() {
