@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import Model.RecipesAdapter;
 
 
 public class SearchActivityList extends ActionBarActivity {
@@ -17,13 +20,15 @@ public class SearchActivityList extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_activity_list);
-        if (savedInstanceState == null) {
+        setContentView(R.layout.fragment_search_activity_list);
+        /*if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
-        }
-
+        }*/
+        RecipesAdapter mainAdapter = new RecipesAdapter(this);
+        ListView listView = (ListView) findViewById(R.id.recipesListView);
+        listView.setAdapter(mainAdapter);
 
     }
 
@@ -58,7 +63,7 @@ public class SearchActivityList extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    /*public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
         }
@@ -79,5 +84,5 @@ public class SearchActivityList extends ActionBarActivity {
 
             return rootView;
         }
-    }
+    }*/
 }
