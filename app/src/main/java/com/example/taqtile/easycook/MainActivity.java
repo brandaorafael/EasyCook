@@ -4,9 +4,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQueryAdapter;
+import com.parse.SaveCallback;
+
+import java.util.ArrayList;
+
+import Model.Ingredient;
+import Model.Recipe;
+import Model.RecipesAdapter;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -19,11 +29,16 @@ public class MainActivity extends ActionBarActivity {
         Parse.enableLocalDatastore(this);
 
         Parse.initialize(this, "L9briZquymAiUgbweETWvgERUJsAy7d6Ws4oGqED", "CU2rg1a03wuGyF7wTtyh73RCN12pacNsRMkei5It");
+        ParseObject.registerSubclass(Recipe.class);
+        Recipe testRecipe = new Recipe();
+        testRecipe.setName("batata3");
+        ArrayList<Ingredient> ingredients;
+        testRecipe.saveInBackground();
 
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
-
+        RecipesAdapter mainAdapter = new RecipesAdapter(this);
+        ListView listView = (ListView) findViewById(R.id.listView);
+        mainAdapter.setTextKey("name");
+        listView.setAdapter(mainAdapter);
     }
 
 
