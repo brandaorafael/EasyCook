@@ -1,5 +1,6 @@
 package com.example.taqtile.easycook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -33,6 +34,11 @@ public class SearchActivity extends ActionBarActivity {
     public void clique_time (View view){
         final SeekBar getTime = (SeekBar) findViewById(R.id.seekBar);
         getTime.setVisibility(View.VISIBLE);
+    }
+
+    public void submitSearch (View view){
+        Intent searchList = new Intent(this.getApplicationContext(), SearchListActivity.class);
+        startActivity(searchList);
     }
 
 

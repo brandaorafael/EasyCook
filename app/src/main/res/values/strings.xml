@@ -3,4 +3,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_search_list">SearchListActivity</string>
+    <string name="fake_busca_listagem_item_titulo">Bolo de caneca</string>
+    <string name="fake_busca_listagem_item_tempo">00:15</string>
 </resources>
