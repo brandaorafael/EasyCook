@@ -69,40 +69,53 @@ public class Recipe extends ParseObject {
 
     public void setName(String name) {
         put("name", name);
-        this.name = name;
     }
 
-    public List<Ingredient> getIngredientsList() {
-        return ingredientsList;
+    public ArrayList<Ingredient> getIngredientsList() {
+        JSONArray jsonArray = getJSONArray("ingredientsList");
+        ArrayList<Ingredient> result = new ArrayList<Ingredient>();
+        for(int i=0;i<jsonArray.length();i++) {
+            Ingredient ingredient = new Ingredient();
+            try {
+                ingredient.fromJSONObject(jsonArray.getJSONObject(i));
+                result.add(ingredient);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     public void setIngredientsList(ArrayList<Ingredient> ingredientsList) {
-        put("ingredients", new JSONArray(ingredientsList));
-        this.ingredientsList = ingredientsList;
+        JSONArray jsonArray = new JSONArray();
+        for(int i = 0; i < ingredientsList.size(); i++){
+            jsonArray.put(ingredientsList.get(i).toJSONObject());
+        }
+        put("ingredientsList", jsonArray);
     }
 
     public int getTime() {
-        return time;
+        return getInt("time");
     }
 
     public void setTime(int time) {
-        this.time = time;
+        put("time", time);
     }
 
     public int getPortions() {
-        return portions;
+        return getInt("portions");
     }
 
     public void setPortions(int portions) {
-        this.portions = portions;
+        put("portions", portions);
     }
 
-    public List<String> getEquipments() {
-        return equipments;
+    public ArrayList<String> getEquipments() {
+        return (ArrayList) getList("equipments");
     }
 
     public void setEquipments(ArrayList<String> equipments) {
-        this.equipments = equipments;
+        put("equipments", equipments);
     }
 
     public PrepareMode getPrepareMode() {
@@ -114,29 +127,10 @@ public class Recipe extends ParseObject {
     }
 
     public float getDifficulty() {
-        return difficulty;
+        return ((float) getDouble("difficulty"));
     }
 
     public void setDifficulty(float difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public JSONObject getJSONObject() {
-        JSONObject result = new JSONObject();
-        try {
-            result.put("name",this.name);
-            result.put("time",this.time);
-            result.put("portions",this.portions);
-            result.put("difficulty",this.difficulty);
-            result.put("ingredients",new JSONArray(this.ingredientsList));
-            result.put("equipments",new JSONArray(this.equipments));
-            // verify
-            result.put("preparationMode", prepareMode);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return result;
+        put("difficulty", difficulty);
     }
 }
