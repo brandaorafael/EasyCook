@@ -19,22 +19,23 @@ import java.util.ArrayList;
  * Created by User on 5/16/2015.
  */
 public class RecipesAdapter extends ParseQueryAdapter<Recipe> {
-    public RecipesAdapter(Context context) {
+    public RecipesAdapter(Context context, final String name, final int total_time) {
+
         super(context, new ParseQueryAdapter.QueryFactory<Recipe>() {
             public ParseQuery<Recipe> create() {
                 ParseQuery query = new ParseQuery("Recipe");
+
+                if (!name.isEmpty()) {
+                    query.whereContains("name",name);
+                }
+
+                if (total_time > 0) {
+                    query.whereLessThanOrEqualTo("time",total_time);
+                }
+
                 ArrayList<String> a = new ArrayList<String>();
                 a.add("azeite");
-                /*ArrayList<JSONObject> jsonArray = new ArrayList<JSONObject>();
-                JSONObject jsonObject = new JSONObject();
-                try{
-                    jsonObject.put("name", "azeite");
-                    jsonObject.putOpt("quantity", 0);
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-                jsonArray.add(jsonObject);*/
-                query.whereContains("ingredientsList", "azeite");
+                query.whereContains("ingredientsNamesList", "azeite");
                 //query.whereContainedIn("ingredientsList", a);//.whereEqualTo("portions", 1);
                 //query.whereContains("ingredients", "azeite");
                 //query.whereContains("ingredientsList", "azeite");
