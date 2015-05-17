@@ -102,7 +102,7 @@ public class MainActivity extends ActionBarActivity {
         startActivityForResult(chooserIntent, 1);
     }
 
-//    PreparationStep pS1;
+    //PreparationStep pS1;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -131,7 +131,7 @@ public class MainActivity extends ActionBarActivity {
                     bitmap = bitmap.createScaledBitmap(bitmap, 400, 400*bitmap.getHeight()/bitmap.getWidth(), false);
                     if(isCamera){
                         Matrix matrix = new Matrix();
-                        matrix.postRotate(90);
+                        matrix.postRotate(-90);
                         bitmap = bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
                     }
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -143,8 +143,8 @@ public class MainActivity extends ActionBarActivity {
                             if(e != null){
                                 Toast.makeText(getApplicationContext(), "Error saving: " + e.getMessage(), Toast.LENGTH_LONG).show();
                             }else{
-                                //pS1.setPhoto(photoFile);
-                                //pS1.saveInBackground();
+                            //    pS1.setPhoto(photoFile);
+                            //    pS1.saveInBackground();
                             }
                         }
                     });
@@ -166,13 +166,14 @@ public class MainActivity extends ActionBarActivity {
         ParseObject.registerSubclass(Recipe.class);
         ParseObject.registerSubclass(PrepareMode.class);
         ParseObject.registerSubclass(PreparationStep.class);
+
         /*openImageIntent();
 
         ArrayList<PreparationStep> s = new ArrayList<PreparationStep>();
         pS1 = new PreparationStep();
         pS1.setTime(0);
-        pS1.setName("Chocolate racista");
-        pS1.setDescription("Negao");
+        pS1.setName("receita do kiki");
+        pS1.setDescription("receita nova");
         Recipe testRecipe = new Recipe();
         testRecipe.setDifficulty(1.0f);
         ArrayList<String> equipments = new ArrayList<String>();
@@ -195,7 +196,7 @@ public class MainActivity extends ActionBarActivity {
         testRecipe.setPortions(1);
         testRecipe.setTime(5);
         PrepareMode pm = new PrepareMode();
-        ArrayList<PreparationStep> s = new ArrayList<PreparationStep>();
+        ArrayList<PreparationStep> sArray = new ArrayList<PreparationStep>();
         PreparationStep pS1 = new PreparationStep();
         pS1.setTime(0);
         pS1.setName("quebrar");
@@ -206,8 +207,8 @@ public class MainActivity extends ActionBarActivity {
         pS2.setName("fritar");
         pS2.setDescription("coloque os ovos na frigideira aquecida com azeite");
         pS2.saveInBackground();
-        s.add(pS1);
-        s.add(pS2);
+        sArray.add(pS1);
+        sArray.add(pS2);
         pm.setSteps(s);
         pm.saveInBackground();
         testRecipe.setPrepareMode(pm);
