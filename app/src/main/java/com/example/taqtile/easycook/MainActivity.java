@@ -172,12 +172,12 @@ public class MainActivity extends ActionBarActivity {
         pS1 = new PreparationStep();
         pS1.setTime(0);
         pS1.setName("Chocolate racista");
-        pS1.setDescription("Negão");
+        pS1.setDescription("Negao");
         Recipe testRecipe = new Recipe();
         testRecipe.setDifficulty(1.0f);
         ArrayList<String> equipments = new ArrayList<String>();
         equipments.add("frigideira");
-        equipments.add("fogão");
+        equipments.add("fogao");
         testRecipe.setEquipments(equipments);
         ArrayList<Ingredient> il = new ArrayList<Ingredient>();
         Ingredient ovo = new Ingredient();

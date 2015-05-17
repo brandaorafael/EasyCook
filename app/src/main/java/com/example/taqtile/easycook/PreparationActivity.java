@@ -64,8 +64,9 @@ public class PreparationActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_preparation, container, false);
+            //rootView.setLayoutParams(new ViewGroup.LayoutParams();
 
-            final LinearLayout stepLayout = (LinearLayout) rootView.findViewById(R.id.step_cell);
+            LinearLayout stepLayout = (LinearLayout) rootView.findViewById(R.id.step_cell_container);
 
             stepLayout.addView(View.inflate(getActivity(), R.layout.step_cell, null));
 

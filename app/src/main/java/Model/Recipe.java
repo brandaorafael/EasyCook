@@ -37,12 +37,16 @@ public class Recipe extends ParseObject {
     }
 
     public ArrayList<Ingredient> getIngredientsList() {
-        JSONArray jsonArray = getJSONArray("ingredientsList");
+        JSONArray jIngredientsNames = getJSONArray("ingredientsNamesList");
+        JSONArray jIngredientsQtds = getJSONArray("ingredientsQtdsList");
+        JSONArray jIngredientsUnits = getJSONArray("ingredientsUnitsList");
         ArrayList<Ingredient> result = new ArrayList<Ingredient>();
-        for(int i=0;i<jsonArray.length();i++) {
+        for(int i=0;i<jIngredientsNames.length();i++) {
             Ingredient ingredient = new Ingredient();
             try {
-                ingredient.fromJSONObject(jsonArray.getJSONObject(i));
+                ingredient.setName(jIngredientsNames.getString(i));
+                ingredient.setQuantity(jIngredientsQtds.getInt(i));
+                ingredient.setUnit(jIngredientsUnits.getString(i));
                 result.add(ingredient);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -52,11 +56,17 @@ public class Recipe extends ParseObject {
     }
 
     public void setIngredientsList(ArrayList<Ingredient> ingredientsList) {
-        JSONArray jsonArray = new JSONArray();
+        JSONArray jIngredientsNames = new JSONArray();
+        JSONArray jIngredientsQtds = new JSONArray();
+        JSONArray jIngredientsUnits = new JSONArray();
         for(int i = 0; i < ingredientsList.size(); i++){
-            jsonArray.put(ingredientsList.get(i).toJSONObject());
+            jIngredientsNames.put(ingredientsList.get(i).getName());
+            jIngredientsQtds.put(ingredientsList.get(i).getQuantity());
+            jIngredientsUnits.put(ingredientsList.get(i).getUnit());
         }
-        put("ingredientsList", jsonArray);
+        put("ingredientsNamesList", jIngredientsNames);
+        put("ingredientsQtdsList", jIngredientsQtds);
+        put("ingredientsUnitsList", jIngredientsUnits);
     }
 
     public int getTime() {
