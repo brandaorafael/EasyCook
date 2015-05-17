@@ -14,7 +14,7 @@ import java.util.List;
  */
 @ParseClassName("PrepareMode")
 public class PrepareMode extends ParseObject {
-    private ArrayList<PreparationStep> steps;
+
     private int currentStep;
 
     public ArrayList<PreparationStep> getSteps() {
@@ -33,29 +33,27 @@ public class PrepareMode extends ParseObject {
         this.currentStep = currentStep;
     }
 
-    public PrepareMode() {
-        this(null);
-    }
 
-    public PrepareMode(ArrayList<PreparationStep> steps) {
-        this.steps = steps;
+    public PrepareMode() {
         this.currentStep = 0;
     }
 
     public PreparationStep nextStep() {
+        ArrayList<PreparationStep> steps = (ArrayList) getList("steps");
         if (currentStep < steps.size()-1)
             return steps.get(++currentStep);
         return null;
     }
 
     public PreparationStep previousStep() {
+        ArrayList<PreparationStep> steps = (ArrayList) getList("steps");
         if (!steps.isEmpty() && currentStep > 0)
             return steps.get(--currentStep);
         return null;
     }
 
     public int howManySteps() {
-        return steps.size();
+        return getList("steps").size();
     }
 
 

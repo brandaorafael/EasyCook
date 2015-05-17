@@ -15,11 +15,6 @@ import java.util.ArrayList;
 @ParseClassName("PreparationStep")
 public class PreparationStep extends ParseObject {
 
-    private String name;
-    private String description;
-    private int time;
-    private ParseFile photo;
-
     public String getName() {
         return getString("name");
     }
@@ -46,10 +41,6 @@ public class PreparationStep extends ParseObject {
 
 
     public PreparationStep() {
-        name = "";
-        description = "";
-        time = 0;
-        photo = null;
     }
 
     public String getDescription() {
