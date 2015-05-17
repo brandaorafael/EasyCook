@@ -8,4 +8,5 @@
     <string name="fake_busca_listagem_item_tempo">00:15</string>
     <string name="title_activity_search_activity_list">SearchActivityList</string>
     <string name="title_activity_preparation">PreparationActivity</string>
+    <string name="title_activity_favorites">FavoritesActivity</string>
 </resources>

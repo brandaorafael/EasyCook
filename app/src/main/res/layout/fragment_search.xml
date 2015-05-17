@@ -21,7 +21,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonName"
-                android:onClick="clique_nome"/>
+                android:onClick="clique_nome"
+                android:background="@color/color_button"
+                android:text="filter by name"
+                android:textSize="20dp"
+                android:textColor="@color/color_text_button"
+                android:layout_margin="10dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,12 +35,22 @@
                 android:visibility="gone"/>
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@color/color_button"
+                android:text="filter by ingredients"
+                android:textSize="20dp"
+                android:textColor="@color/color_text_button"
+                android:layout_margin="10dp" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonTime"
-                android:onClick="clique_time"/>
+                android:onClick="clique_time"
+                android:background="@color/color_button"
+                android:text="filter by time"
+                android:textSize="20dp"
+                android:textColor="@color/color_text_button"
+                android:layout_margin="10dp"/>
             <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,6 +65,10 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/submit_search"
-        android:onClick="submitSearch"/>
+        android:onClick="submitSearch"
+        android:text="SUBMIT"
+        android:textSize="25dp"
+        android:textColor="@color/color_text_button"
+        android:background="@color/color_button_submit"/>
 
 </RelativeLayout>

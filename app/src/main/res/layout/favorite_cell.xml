@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24dp"
-            android:text="@string/fake_busca_listagem_item_titulo"/>
+            android:text="Favorito 1"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

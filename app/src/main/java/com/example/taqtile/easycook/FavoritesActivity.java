@@ -1,42 +1,35 @@
 package com.example.taqtile.easycook;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.os.Build;
 
 
-public class SearchActivityList extends ActionBarActivity {
+public class FavoritesActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_activity_list);
+        setContentView(R.layout.activity_favorites);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-
-
-    }
-
-    public void clique_start (View view){
-        Intent start = new Intent(this.getApplicationContext(), PreparationActivity.class);
-        startActivity(start);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search_activity_list, menu);
+        getMenuInflater().inflate(R.menu.menu_favorites, menu);
         return true;
     }
 
@@ -66,17 +59,7 @@ public class SearchActivityList extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_search_activity_list, container, false);
-
-
-            LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.list_container);
-
-            for (int i = 0; i <=10; i++) {
-                View view = View.inflate(getActivity(), R.layout.search_cell, null);
-
-                linearLayout.addView(view);
-            }
-
+            View rootView = inflater.inflate(R.layout.fragment_favorites, container, false);
             return rootView;
         }
     }
