@@ -9,43 +9,34 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.SeekBar;
+import android.widget.LinearLayout;
 
 
-public class SearchActivity extends ActionBarActivity {
+public class SearchActivityList extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_search_activity_list);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+
     }
 
-    public void clique_nome (View view){
-        final EditText getName = (EditText) findViewById(R.id.getNome);
-        getName.setVisibility(View.VISIBLE);
-    }
-
-    public void clique_time (View view){
-        final SeekBar getTime = (SeekBar) findViewById(R.id.seekBar);
-        getTime.setVisibility(View.VISIBLE);
-    }
-
-    public void submitSearch (View view){
-        Intent searchList = new Intent(this.getApplicationContext(), SearchActivityList.class);
-        startActivity(searchList);
+    public void clique_start (View view){
+        Intent start = new Intent(this.getApplicationContext(), PreparationActivity.class);
+        startActivity(start);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+        getMenuInflater().inflate(R.menu.menu_search_activity_list, menu);
         return true;
     }
 
@@ -75,9 +66,18 @@ public class SearchActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_search_activity_list, container, false);
+
+
+            LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.list_container);
+
+            for (int i = 0; i <=2; i++) {
+                View view = View.inflate(getActivity(), R.layout.search_cell, null);
+
+                linearLayout.addView(view);
+            }
+
             return rootView;
         }
-
     }
 }
