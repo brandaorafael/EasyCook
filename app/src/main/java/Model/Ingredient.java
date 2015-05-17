@@ -1,5 +1,8 @@
 package Model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by User on 5/16/2015.
  */
@@ -31,5 +34,25 @@ public class Ingredient {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public JSONObject toJSONObject(){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("name", name);
+            jsonObject.put("quantity", quantity);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+
+    public void fromJSONObject(JSONObject jsonObject){
+        try {
+            name = jsonObject.getString("name");
+            quantity = jsonObject.getInt("quantity");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
