@@ -1,6 +1,5 @@
 package com.example.taqtile.easycook;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -9,16 +8,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.SeekBar;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
-public class SearchActivity extends ActionBarActivity {
+public class PreparationActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_preparation);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -26,26 +26,12 @@ public class SearchActivity extends ActionBarActivity {
         }
     }
 
-    public void clique_nome (View view){
-        final EditText getName = (EditText) findViewById(R.id.getNome);
-        getName.setVisibility(View.VISIBLE);
-    }
-
-    public void clique_time (View view){
-        final SeekBar getTime = (SeekBar) findViewById(R.id.seekBar);
-        getTime.setVisibility(View.VISIBLE);
-    }
-
-    public void submitSearch (View view){
-        Intent searchList = new Intent(this.getApplicationContext(), SearchActivityList.class);
-        startActivity(searchList);
-    }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+        getMenuInflater().inflate(R.menu.menu_preparation, menu);
         return true;
     }
 
@@ -72,12 +58,32 @@ public class SearchActivity extends ActionBarActivity {
         public PlaceholderFragment() {
         }
 
+        int cont = 0;
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_preparation, container, false);
+
+            final LinearLayout stepLayout = (LinearLayout) rootView.findViewById(R.id.step_cell);
+
+            stepLayout.addView(View.inflate(getActivity(), R.layout.step_cell, null));
+
+
+            Button button = (Button) rootView.findViewById(R.id.button);
+            final TextView textView = (TextView)rootView.findViewById(R.id.textView2);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cont++;
+                    textView.setText(String.valueOf(cont));
+
+//                    stepLayout.addView(View.inflate(getActivity(), R.layout.step_cell, null));
+                }
+            });
+
             return rootView;
         }
-
     }
 }
