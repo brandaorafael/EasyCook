@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.SeekBar.*;
 
 
 public class SearchActivity extends ActionBarActivity {
@@ -24,21 +26,42 @@ public class SearchActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
     }
+
 
     public void clique_nome (View view){
         final EditText getName = (EditText) findViewById(R.id.getNome);
-        getName.setVisibility(View.VISIBLE);
+        int value;
+        if(getName.getVisibility() == View.VISIBLE){
+            value = View.GONE;
+        }else{
+            value = View.VISIBLE;
+        }
+        getName.setVisibility(value);
     }
 
     public void clique_ingredients (View view){
         final EditText getIngredients = (EditText) findViewById(R.id.getIngredients);
-        getIngredients.setVisibility(View.VISIBLE);
+        int value;
+        if(getIngredients.getVisibility() == View.VISIBLE){
+            value = View.GONE;
+        }else{
+            value = View.VISIBLE;
+        }
+        getIngredients.setVisibility(value);
     }
 
     public void clique_time (View view){
         final SeekBar getTime = (SeekBar) findViewById(R.id.seekBar);
-        getTime.setVisibility(View.VISIBLE);
+        int value;
+        if(getTime.getVisibility() == View.VISIBLE){
+            value = View.GONE;
+        }else{
+            value = View.VISIBLE;
+        }
+        getTime.setVisibility(value);
+        findViewById(R.id.textView3).setVisibility(value);
     }
 
     public void submitSearch (View view){
@@ -80,7 +103,27 @@ public class SearchActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+            final SeekBar sb =  ((SeekBar)rootView.findViewById(R.id.seekBar));
+            sb.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                    int total = i * 180;
+                    int horas = total / 3600;
+                    int minutos = (total - horas * 3600) / 60;
+                    ((TextView) rootView.findViewById(R.id.textView3)).setText("" + horas + "h" + minutos + "min");
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
             return rootView;
         }
 
