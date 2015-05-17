@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="15dp"
     android:id="@+id/idTop"
-    android:onClick="clique_start">
+    android:onClick="clique_start"
+    android:background="@color/color_cell_background">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +30,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fake_busca_listagem_item_tempo" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ingredients"/>
 
     </LinearLayout>
 

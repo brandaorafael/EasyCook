@@ -73,12 +73,16 @@ public class PreparationActivity extends ActionBarActivity {
 
             Button button = (Button) rootView.findViewById(R.id.button);
             final TextView textView = (TextView)rootView.findViewById(R.id.textView2);
+            final TextView textView2 = (TextView) rootView.findViewById(R.id.textView);
+            textView2.setText("Step: 1");
+            button.setText("Next");
+            textView.setText("Do stuff");
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     cont++;
-                    textView.setText(String.valueOf(cont));
+                    textView.setText("Step: " + String.valueOf(cont));
 
 //                    stepLayout.addView(View.inflate(getActivity(), R.layout.step_cell, null));
                 }

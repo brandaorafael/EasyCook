@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -64,6 +65,19 @@ public class RecipesAdapter extends ParseQueryAdapter<Recipe> {
         nameTextView.setText(recipe.getName());
         /*TextView otherNameTextView = (TextView)(view.findViewById(R.id.otherName));
         otherNameTextView.setText("description: " + recipe.getName());*/
+
+        TextView ingredients = (TextView) view.findViewById(R.id.ingredients);
+        ingredients.setText("Ingredients");
+        /*String ingredientsList = "";
+        ArrayList<Ingredient> ingredientes = recipe.getIngredientsList();
+        for(int i = 0; i < ingredientes.size(); i++){
+            Ingredient ingredient = ingredientes.get(i);
+            if(i != 0)
+                ingredientsList = ingredientsList + ", ";
+            ingredientsList = ingredientsList + ingredient.getName().toString();
+        }
+        String hey_there = ingredientsList;
+        ingredients.setText(ingredientsList);*/
 
         return view;
     }

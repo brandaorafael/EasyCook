@@ -38,7 +38,7 @@ public class SearchActivityList extends ActionBarActivity {
 
     public void clique_start (View view){
         Intent start = new Intent(this.getApplicationContext(), PreparationActivity.class);
-        
+
         startActivity(start);
     }
 
