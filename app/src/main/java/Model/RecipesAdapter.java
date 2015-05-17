@@ -1,12 +1,14 @@
 package Model;
 
 import android.content.Context;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.taqtile.easycook.R;
+import com.example.taqtile.easycook.SearchActivityList;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 
@@ -19,25 +21,33 @@ import java.util.ArrayList;
  * Created by User on 5/16/2015.
  */
 public class RecipesAdapter extends ParseQueryAdapter<Recipe> {
-    public RecipesAdapter(Context context, final String name, final int total_time, final String[] ingredients) {
 
+    public RecipesAdapter(Context context, final String name, final int total_time, final String[] ingredients) {
         super(context, new ParseQueryAdapter.QueryFactory<Recipe>() {
             public ParseQuery<Recipe> create() {
-                ParseQuery query = new ParseQuery("Recipe");
+
+                ParseQuery<Recipe> query = Recipe.getQuery();
 
                 if (!name.isEmpty()) {
-                    query.whereContains("name",name);
+                    query.whereContains("name", name);
                 }
 
                 if (total_time > 0) {
                     query.whereLessThanOrEqualTo("time",total_time);
                 }
 
+                if(ingredients.length > 0) {
+                    ArrayList<String> a = new ArrayList<String>();
+                    for (int i = 0; i < ingredients.length; i++) {
+                        if(ingredients[i].length() > 0)
+                            a.add(ingredients[i]);
+                    }
+                    if(a.size() > 0){
+                        query.whereContainedIn("ingredientsNamesList", a);
+                    }
 
-                ArrayList<String> a = new ArrayList<String>();
-                for (int i=0;i<ingredients.length;i++)
-                    a.add(ingredients[i]);
-                query.whereContainedIn("ingredientsNamesList", a);
+                }
+
 
                 return query;
             }

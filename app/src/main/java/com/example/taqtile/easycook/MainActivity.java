@@ -158,7 +158,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        super.onCreate(savedInstanceState);
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
 
@@ -220,12 +220,12 @@ public class MainActivity extends ActionBarActivity {
         pS1.setName("quebrar");
         pS1.saveInBackground();*/
 
-        /*RecipesAdapter mainAdapter = new RecipesAdapter(this);
+        /*setContentView(R.layout.activity_main);
+        RecipesAdapter mainAdapter = new RecipesAdapter(this, "kiki");
         ListView listView = (ListView) findViewById(R.id.listView);
-        mainAdapter.setTextKey("name");
         listView.setAdapter(mainAdapter);*/
 
-        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -280,6 +280,7 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
             return rootView;
         }
     }

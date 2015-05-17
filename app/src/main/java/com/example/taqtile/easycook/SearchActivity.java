@@ -67,10 +67,11 @@ public class SearchActivity extends ActionBarActivity {
     public void submitSearch (View view){
         Intent searchList = new Intent(this.getApplicationContext(), SearchActivityList.class);
         EditText getName = (EditText) findViewById(R.id.getNome);
-        searchList.putExtra("name", getName.getText());
+        searchList.putExtra("name", getName.getText().toString());
         SeekBar sb = (SeekBar) findViewById(R.id.seekBar);
         searchList.putExtra("total_time", sb.getProgress() * 180); // 100% = 5h
         EditText  ingredients = (EditText) findViewById(R.id.getIngredients);
+        String array[] = ingredients.getText().toString().split(",");
         searchList.putExtra("ingredients",ingredients.getText().toString().split(","));
         startActivity(searchList);
     }

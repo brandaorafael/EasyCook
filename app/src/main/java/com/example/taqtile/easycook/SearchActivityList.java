@@ -29,6 +29,7 @@ public class SearchActivityList extends ActionBarActivity {
         String name = getIntent().getStringExtra("name");
         int time = getIntent().getIntExtra("total_time",0);
         String ingredients[] = getIntent().getStringArrayExtra("ingredients");
+        System.out.println(name);
         RecipesAdapter mainAdapter = new RecipesAdapter(this, name, time, ingredients);
         ListView listView = (ListView) findViewById(R.id.recipesListView);
         listView.setAdapter(mainAdapter);
@@ -37,6 +38,7 @@ public class SearchActivityList extends ActionBarActivity {
 
     public void clique_start (View view){
         Intent start = new Intent(this.getApplicationContext(), PreparationActivity.class);
+        
         startActivity(start);
     }
 

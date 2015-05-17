@@ -22,18 +22,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:text="@string/fake_busca_listagem_item_titulo"/>
+            android:textSize="24sp"
+            android:text="@string/fake_busca_listagem_item_titulo"
+            android:id="@+id/title" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fake_busca_listagem_item_tempo" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
